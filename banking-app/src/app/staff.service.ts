@@ -11,7 +11,7 @@ export class StaffService {
   constructor(private http: HttpClient) { }
   listallstaff(): Observable<any> {
     console.log("success");
-    return this.http.get(`${this.baseUrl}` + '/api/admin/staff/listAllStaff'+ `${id}`);
+    return this.http.get(`${this.baseUrl}` + '/api/admin/staff/listAllStaff');
   }
   disableorenablestaff(id:number): Observable<any> {
     console.log("success");
