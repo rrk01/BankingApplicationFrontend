@@ -18,7 +18,7 @@ export class ApproverComponent implements OnInit {
   ngOnInit(): void {
   }
   profileForm = new FormGroup({
- 
+    id: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     userName: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -32,6 +32,7 @@ export class ApproverComponent implements OnInit {
 
    create() {
          //Angular
+    this.user.id=this.f['id'].value;
     this.user.name=this.f['name'].value;
     this.user.userName=this.f['userName'].value;
     this.user.password=this.f['password'].value;
@@ -49,6 +50,17 @@ export class ApproverComponent implements OnInit {
     //Here logic will be there Develop your application can add logic here to call API Hit
    
    }
+   disableorenableStaff() {
+    this.staffService.disableorenablestaff(this.user.id).subscribe(data => console.log(data),error=>console.log(error));
+    this.user= new Staff();
+    this.ack="Record added successfully"
+  }
+   getStaff(){ 
+    this.staffService.listallstaff().subscribe((data: any) => {
+      console.log(data);
+      this.users = data;
+    });
+  }
     createStaffMember() {
       this.staffService.createstafflist(this.user).subscribe(data => console.log(data),error=>console.log(error));
       this.user= new Staff();
