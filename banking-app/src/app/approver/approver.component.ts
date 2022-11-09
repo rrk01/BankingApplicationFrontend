@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Staff } from '../staff';
-import { StaffService } from '../staff.service';
+import { Staff } from '../models/staff/staff';
+import { StaffService } from '../models/staff/staff.service';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
@@ -82,7 +82,6 @@ export class ApproverComponent implements OnInit {
     this.staffService.listallstaff().subscribe((data: any) => {
       console.log(data);
       console.log(this.staff.name);
-      this.checkedButton(this.staff).status
       this.staffs = data;
       for(let i=0;i<data.length;i++){
         if(this.checkedButton(this.staffs[i]).status=='ENABLED'){
@@ -118,7 +117,10 @@ export class ApproverComponent implements OnInit {
   checkedButton(user: Staff){
     return user;
   }
-  
+  redirectToLogin(){
+    sessionStorage.clear();
+    this.router.navigate(['./login']);
+  }
 
   
 }

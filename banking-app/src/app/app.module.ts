@@ -11,8 +11,6 @@ import { ApproverComponent } from './approver/approver.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +21,6 @@ import { FooterComponent } from './footer/footer.component';
     StaffComponent,
     RegistrationComponent,
     ApproverComponent,
-    HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,

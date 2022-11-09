@@ -1,5 +1,6 @@
 export class Staff {
-    id: any;
+    // Here we define all the variable which may be required by Service Class
+    id:any;
     name:any;
     userName:any;
     password:any;

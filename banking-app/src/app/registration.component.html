@@ -76,20 +76,21 @@ p {
 </head>
 <body>
 
-  <form [formGroup]="profileForm" (ngSubmit)="submit()">
+<form action="/action_page.php">
 
   <div style="text-align:center;" class="container">
-    <input type="text" placeholder="User Name" name="username" id="username" formControlName="userName" required>
 
-    <input type="text" placeholder="Full Name" name="fullname" id="fullname" formControlName="fullName" required>
+    <input type="text" placeholder="User Name" name="username" id="username" required>
 
-    <input type="password" placeholder="Password" name="pswd" id="pswd" formControlName="password" required>
+    <input type="text" placeholder="Full Name" name="fullname" id="fullname" required>
+
+    <input type="password" placeholder="Password" name="pswd" id="pswd" required>
 
     <input type="password" placeholder="Confirm Password" name="pswd-confirm" id="pswd-confirm" required>
 
     <p>Already have a customer account <a href="#">LOGIN HERE</a></p>
 
-    <button type="submit" class="registerbtn" (click)="submit()">Register</button>
+    <button type="submit" class="registerbtn">Register</button>
 
   </div>
 
