@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
     return this.forgotForm.controls;
   }
 
+  goToRegister(){
+    this.router.navigate(['/registration'])
+  }
+
   clogin() {
     this.forgot = false;
     this.inList = false;
@@ -176,7 +180,6 @@ alogin(){
           this.router.navigate(['/approver']);
           break; //braks out of loop once finished it will route to home
       }else{
-        this.router.navigate(['']);
         this.router.navigate(['']);
         this.failedLogin = true;
         this.wrongPassword = true;
