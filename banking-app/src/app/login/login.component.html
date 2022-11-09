@@ -1,12 +1,11 @@
-<span class="align-middle">
+<span class="dashboard" style="border:1px solid black">
     <div class="jumbotron text-center">
         <nav>
             <H2>Welcome, what type of user are you?</H2>
             <button (click)="isStaff()">staff</button>
             <button (click)="isCustomer()">customer</button>
         </nav>
-
-        <br><br>
+        <br>
         <div *ngIf="staffpage">
             <form [formGroup]="profileForm" (ngSubmit)="slogin()">
                 <div class="container">

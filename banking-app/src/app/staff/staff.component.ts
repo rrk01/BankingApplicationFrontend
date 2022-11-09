@@ -13,6 +13,8 @@ import { CustomerService } from '../models/customer/customer.service';
   providers: [AccountService]
 })
 export class StaffComponent implements OnInit {
+  // CURRENT STAFF
+  currentStaff = sessionStorage.getItem('staff-name');
   // For Button 1
   tempCustomer: any;
   accountNumber: any;
