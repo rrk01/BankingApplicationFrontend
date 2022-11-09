@@ -4,4 +4,5 @@ export class Staff {
     userName:any;
     password:any;
     status:any;
+    checked?:any;
 }

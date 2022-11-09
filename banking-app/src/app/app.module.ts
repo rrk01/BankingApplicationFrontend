@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CustomerComponent } from './customer/customer.component';
 import { StaffComponent } from './staff/staff.component';
-import { AdminComponent } from './admin/admin.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ApproverComponent } from './approver/approver.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,17 @@ import { ApproverComponent } from './approver/approver.component';
     LoginComponent,
     CustomerComponent,
     StaffComponent,
-    AdminComponent,
     RegistrationComponent,
-    ApproverComponent
+    ApproverComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
