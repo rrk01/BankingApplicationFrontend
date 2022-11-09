@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApproverService {
+export class RegistrationService {
 
   private baseUrl='http://localhost:9090';
 

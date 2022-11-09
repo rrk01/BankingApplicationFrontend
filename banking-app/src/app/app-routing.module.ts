@@ -4,17 +4,15 @@ import { ApproverComponent } from './approver/approver.component';
 import { CustomerComponent } from './customer/customer.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { StaffComponent } from './staff/staff.component';
 
 const routes: Routes = [
-  {path:'approver',component:ApproverComponent},
-  {path:'customer',component:CustomerComponent},
-  {path:'home',component:HomeComponent},
-  {path:'login', component: LoginComponent},
-  {path: 'registration',component: RegistrationComponent},
-  {path: 'staff',component: StaffComponent},
-];
+  { path: '', component: LoginComponent},
+  { path: 'customer', component: CustomerComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'staff', component: StaffComponent },
+  { path: 'approver', component: ApproverComponent }
+]; //routes for routes;
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
