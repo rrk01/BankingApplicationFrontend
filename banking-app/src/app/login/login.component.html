@@ -1,5 +1,75 @@
-<p>login works!</p>
+<span class="align-middle">
+    <div class="jumbotron text-center">
+        <nav>
+            <H2>Welcome, what type of user are you?</H2>
+            <button (click)="isStaff()">staff</button>
+            <button (click)="isCustomer()">customer</button>
+        </nav>
 
-<button (click)="changeLoggedIn()">
-    <span> Login </span>
- </button>
+        <br><br>
+        <div *ngIf="staffpage">
+            <form [formGroup]="profileForm" (ngSubmit)="slogin()">
+                <div class="container">
+                    <h2>
+                        Staff Login
+                    </h2>
+                    <br>
+                    <input type="text" placeholder="userName" name="userName" required formControlName="userName">
+                    <br>
+                    <input type="password" placeholder="password" name="password" formControlName="password">
+                    <br>
+                    <br>
+                    <div class="alert-danger" *ngIf="failedLogin">
+                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorect username </div>
+                        <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
+                    </div>
+                    <button type="button" (click)="slogin()">Submit</button>
+                </div>
+            </form>
+        </div>
+
+        <div *ngIf="customerpage">
+            <form [formGroup]="profileForm" (ngSubmit)="clogin()">
+                <div class="container">
+                    <h2>
+                        Customer Login
+                    </h2>
+                    <br>
+                    <input type="text" placeholder="userName" name="userName" required formControlName="userName">
+                    <br>
+                    <input type="password" placeholder="password" name="password" formControlName="password">
+                    <br>
+                    <br>
+                    <div class="alert-danger" *ngIf="failedLogin">
+                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorect username </div>
+                        <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
+                    </div>
+                    <button type="button" class="forget" (click)="isForgot()">forgot password </button>
+                    <br>
+                    <button type="button" (click)="clogin()">Submit</button>
+                    <br>
+                    <br>
+                </div>
+                <form [formGroup]="forgotForm" (ngSubmit)="customerInList()">
+                    <div *ngIf="forgot">
+                        <h2>Enter your username</h2>
+                        <input type="text" placeholder="userName" name="userName" required formControlName="userName">
+                        <br>
+                        <div *ngIf="wrongUsername" class="alert-danger"> Incorect username </div>
+                        <button type="button" (click)="customerInList()">Enter</button>
+                    </div>
+                    <div *ngIf="inList">
+                        <h2>{{secretQ}}?</h2>
+                        <input type="text" placeholder="Answer" name="secretAnswer" required formControlName="secretAnswer">
+                        <br>
+                        <div *ngIf="wrongAnswer" class="alert-danger"> Wrong Answer </div>
+                        <button type="button" (click)="answerIsRight()">Enter</button>
+                    </div>
+                    <div *ngIf="uRight">
+                        password : {{pass}}
+                    </div>
+                </form>
+            </form>
+        </div>
+    </div>
+</span>

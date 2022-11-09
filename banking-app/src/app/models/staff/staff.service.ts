@@ -13,6 +13,12 @@ export class StaffService {
 
   constructor(private http: HttpClient) { }
 
+  // Greg
+  getStaffList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + '/api/staff/getstaff'); 
+  }
+  // -------------------------------------------
+
   //Read Operation
   getUserList(): Observable<any> {
     return this.http.get(`${this.baseUrl}` + '/account/{}');  //will change
