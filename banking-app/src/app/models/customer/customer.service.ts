@@ -6,13 +6,17 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class CustomerService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
 
   // Greg 
   getuserList(): Observable<any> {
     return this.http.get(`${this.baseUrl}` + '/api/customer/getcustomer');
+  }
+  createcustomerList(user: object): Observable<object> {
+    console.log("success");
+    return this.http.post(`${this.baseUrl}` + '/api/customer/register', user);
   }
   // -----------------------------
 
@@ -28,5 +32,6 @@ export class CustomerService {
   updateCustomerDisable(customer_id: number): Observable<any> {
     return this.http.put(`${this.baseUrl}` + `/api/staff/customer/disable/` + `${customer_id}`, { responseType: 'text' });  //will change
   }
+
 
 }
