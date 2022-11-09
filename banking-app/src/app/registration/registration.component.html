@@ -76,7 +76,7 @@ p {
 </head>
 <body>
 
-<form action="/action_page.php">
+<form [formGroup]="profileForm" (ngSubmit)="submit()">
 
   <div style="text-align:center;" class="container">
 
@@ -84,9 +84,19 @@ p {
 
     <input type="text" placeholder="Full Name" name="fullname" id="fullname" required>
 
+    <input type="text" placeholder="Phone" name="phone" id="phone" required>
+
     <input type="password" placeholder="Password" name="pswd" id="pswd" required>
 
     <input type="password" placeholder="Confirm Password" name="pswd-confirm" id="pswd-confirm" required>
+
+    <input type="text" placeholder="SSN" name="ssn" id="ssn" required>
+
+    <input type="text" placeholder="Phone" name="phone" id="phone" required>
+
+    <input type="text" placeholder="Secret Question" name="secretQuestion" id="secretQuestion" required>
+
+    <input type="text" placeholder="Secret Answer" name="secretAnswer" id="secretAnswer" required>
 
     <p>Already have a customer account <a href="#">LOGIN HERE</a></p>
 
