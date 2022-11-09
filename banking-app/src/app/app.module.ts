@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http' // need
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -8,11 +9,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { StaffComponent } from './staff/staff.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ApproverComponent } from './approver/approver.component';
-
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +20,11 @@ import { FooterComponent } from './footer/footer.component';
     StaffComponent,
     RegistrationComponent,
     ApproverComponent,
-    HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule, // Need
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule
   ],

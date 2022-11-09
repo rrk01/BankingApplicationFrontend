@@ -1,0 +1,27 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountService {
+
+  private baseUrl = 'http://localhost:9090';
+
+  constructor(private http: HttpClient) { }
+
+  //Read Operation
+  getAccountTransactions(accountNumber: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + `/api/staff/account/` + `${accountNumber}`);  //will change
+  }
+
+  getAllAccounts(): Observable<any> { // Getting accounts that aren't approved
+    return this.http.get(`${this.baseUrl}` + `/api/staff/accounts/approved`);
+  }
+
+  approveAccount(accountNumber_:number, customer_id:number): Observable<any> {
+    return this.http.put(`${this.baseUrl}` + `/api/staff/accounts/approved/`+`${accountNumber_}` + `/` + `${customer_id}`, {responseType: 'text'});  //will change
+  }
+
+}

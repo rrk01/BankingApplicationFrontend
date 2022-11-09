@@ -1,12 +1,12 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 @Injectable({
   providedIn: 'root'
 })
-export class StaffService {
- private baseUrl='http://localhost:9090';
+export class RegistrationService {
+
+  private baseUrl='http://localhost:9090';
 
   constructor(private http: HttpClient) { }
   listallstaff(): Observable<any> {
