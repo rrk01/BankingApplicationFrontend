@@ -6,6 +6,7 @@
             <button (click)="isStaff()">Staff</button>
             <button (click)="isCustomer()">Customer</button>
             <button  type="button" (click)="goToRegister()">New Customer?</button>
+
         </nav>
         <br>
         <div *ngIf="staffpage">
@@ -21,9 +22,11 @@
                     <br>
                     <br>
                     <div class="alert-danger" *ngIf="failedLogin">
+                    
                         <div *ngIf="InactiveUser" [ngClass] = "'error'"> Inactive User </div>
                         <div *ngIf="blankLogin" [ngClass] = "'error'"> Form cannot be blank </div>
                         <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorrect username </div>
+
                         <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
                     </div>
                     <button type="button" (click)="slogin()">Submit</button>
@@ -44,9 +47,11 @@
                     <br>
                     <br>
                     <div class="alert-danger" *ngIf="failedLogin">
+
                         <div *ngIf="InactiveUser" [ngClass] = "'error'"> Inactive User </div>
                         <div *ngIf="blankLogin" [ngClass] = "'error'"> Form cannot be blank </div>
                         <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorrect username </div>
+
                         <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
                     </div>
                     <button type="button" class="forget" (click)="isForgot()">forgot password </button>
