@@ -21,7 +21,9 @@
                     <br>
                     <br>
                     <div class="alert-danger" *ngIf="failedLogin">
-                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorect username </div>
+                        <div *ngIf="InactiveUser" [ngClass] = "'error'"> Inactive User </div>
+                        <div *ngIf="blankLogin" [ngClass] = "'error'"> Form cannot be blank </div>
+                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorrect username </div>
                         <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
                     </div>
                     <button type="button" (click)="slogin()">Submit</button>
@@ -42,7 +44,9 @@
                     <br>
                     <br>
                     <div class="alert-danger" *ngIf="failedLogin">
-                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorect username </div>
+                        <div *ngIf="InactiveUser" [ngClass] = "'error'"> Inactive User </div>
+                        <div *ngIf="blankLogin" [ngClass] = "'error'"> Form cannot be blank </div>
+                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorrect username </div>
                         <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
                     </div>
                     <button type="button" class="forget" (click)="isForgot()">forgot password </button>
