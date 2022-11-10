@@ -12,10 +12,8 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./approver.component.css']
 })
 export class ApproverComponent implements OnInit {
-  
   check:boolean=false;
   Chicken:string="Food";
-  htmlString: string;
   viewCreateStaff:boolean = true;
   viewViewStaff:boolean = false;
   boxchecked:boolean = true;
@@ -72,7 +70,7 @@ export class ApproverComponent implements OnInit {
     }
     
    }
-   disableorenableStaff(id:number) {
+   disableOrEnableStaff(id:number) {
       this.staffService.disableorenablestaff(id).subscribe(data => console.log(data),error=>console.log(error));
       console.log("user id: "+id);
       //this.toggleChecked(id);
@@ -82,6 +80,7 @@ export class ApproverComponent implements OnInit {
     this.staffService.listallstaff().subscribe((data: any) => {
       console.log(data);
       console.log(this.staff.name);
+      // this.checkedButton(this.staff).status
       this.staffs = data;
       for(let i=0;i<data.length;i++){
         if(this.checkedButton(this.staffs[i]).status=='ENABLED'){
@@ -105,6 +104,7 @@ export class ApproverComponent implements OnInit {
   toggleViewStaff() {
     this.viewViewStaff = !this.viewViewStaff;
     this.viewCreateStaff = !this.viewCreateStaff;
+    this.getStaff();
   }
   toggleChecked(id:any){
     id=!id;
@@ -117,10 +117,10 @@ export class ApproverComponent implements OnInit {
   checkedButton(user: Staff){
     return user;
   }
+
   redirectToLogin(){
     sessionStorage.clear();
     this.router.navigate(['./login']);
   }
-
   
 }

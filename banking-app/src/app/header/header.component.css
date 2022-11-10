@@ -1,0 +1,11 @@
+.AdminHeader{
+    border-style:solid;
+    margin-bottom:30px;
+}
+.logoutbutton{
+    position:relative;
+    left: 1200px;
+    top: -60px;
+    height:50px;
+    width:100px;
+}

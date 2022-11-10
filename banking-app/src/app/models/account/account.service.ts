@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AccountService {
 
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
 
@@ -22,6 +22,11 @@ export class AccountService {
 
   approveAccount(accountNumber_:number, customer_id:number): Observable<any> {
     return this.http.put(`${this.baseUrl}` + `/api/staff/accounts/approved/`+`${accountNumber_}` + `/` + `${customer_id}`, {responseType: 'text'});  //will change
+  }
+
+  // ------------------------------------------------------
+  getCustomerAccounts(newCustomerNo:any): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + `/api/customer/` + `${newCustomerNo}` + `/account`);
   }
 
 }

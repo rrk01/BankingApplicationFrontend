@@ -5,8 +5,9 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 700px;
-    height: 500px;
+    width: auto;
+    height: auto;
+    padding: 25px;
 }
 
 .header{
@@ -29,13 +30,6 @@
 
 button{
     margin:5px;
-}
-
-.footer {
-    position: absolute;
-    border: 1px solid black;
-    bottom: 0;
-    width: 100%;
 }
 
 /* ---------------- */

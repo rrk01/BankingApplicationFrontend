@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('customer-password',this.users[i].password);
               sessionStorage.setItem('customer-phone',this.users[i].phone);
               sessionStorage.setItem('customer-status',this.users[i].status);
-              this.router.navigate(['./customer']);
+              this.router.navigate(['/profile']);
               break; //braks out of loop once finished it will route to home
             } else{
               this.router.navigate(['']);
@@ -121,7 +121,7 @@ slogin() {
 
   console.log(this.profileForm.value)
 
-  this.staffService.listallstaff()
+  this.staffService.getStaffList()
   .subscribe(data=>
     {this.users=data;
     console.log(this.users)
@@ -136,7 +136,7 @@ slogin() {
           sessionStorage.setItem('staff-userName',this.users[i].userName);
           sessionStorage.setItem('staff-password',this.users[i].password);
           sessionStorage.setItem('staff-status',this.users[i].status);
-          this.router.navigate(['./staff']);
+          this.router.navigate(['/staff']);
           break; //braks out of loop once finished it will route to home
         } else{
           this.router.navigate(['']);
@@ -262,10 +262,6 @@ isForgot(){
   this.failedLogin = false;
   this.inList= false;
   this.uRight = false;
-}
-redirectToLogin(){
-  sessionStorage.clear();
-  this.router.navigate(['./staff']);
 }
 
 

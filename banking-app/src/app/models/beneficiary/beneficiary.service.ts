@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class BeneficiaryService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,12 @@ export class BeneficiaryService {
 
   approveBeneficiary(beneficiaryAcNo:number): Observable<any>  {
     return this.http.put(`${this.baseUrl}` + `/api/staff/beneficiary/`+`${beneficiaryAcNo}`, {responseType: 'text'});  //will change
+  }
+
+  // Ryan
+  createuserlist(transfers: object): Observable<object> {
+    console.log("success");
+    return this.http.post(`${this.baseUrl}` + '/api/customer/beneficiaries', transfers);
   }
 
 }
