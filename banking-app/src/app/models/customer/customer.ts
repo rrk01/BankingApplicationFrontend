@@ -1,5 +1,5 @@
 export class Customer {
-  [x: string]: any;
+  
     // 
     id:any;
 	ssn:any;

@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   wrongPassword: any;
   failedLogin: any;
   wrongAnswer: any;
+  blankLogin:any;
   
   ngOnInit(): void {
   }
@@ -73,6 +74,11 @@ export class LoginComponent implements OnInit {
 
     console.log(this.profileForm.value)
 
+    if(this.user.userName=='' || this.user.password==''){
+      this.failedLogin = true;
+      this.blankLogin = true;
+    }
+
       this.customerService.getuserList()
       .subscribe(data=>
         {this.users=data;
@@ -97,7 +103,7 @@ export class LoginComponent implements OnInit {
               this.failedLogin = true;
               this.wrongPassword = true;
             }
-          }else{
+          }else if(this.user.userName != this.users[i].userName && this.user.userName!=''){
             this.router.navigate(['']);
             this.failedLogin = true;
             this.wrongUsername = true;
@@ -118,6 +124,11 @@ slogin() {
 
   this.user.userName=this.f['userName'].value;         //Angular
   this.user.password=this.f['password'].value;
+
+  if(this.user.userName=='' || this.user.password==''){
+    this.failedLogin = true;
+    this.blankLogin = true;
+  }
 
   console.log(this.profileForm.value)
 
@@ -147,7 +158,7 @@ slogin() {
       else if(this.user.userName == 'admin@admin.com'){
         this.alogin();
       }
-      else if(this.user.userName != this.users[i].userName && this.user.userName != 'admin@admin.com'){
+      else if(this.user.userName != this.users[i].userName && this.user.userName != 'admin@admin.com' && this.user.userName!=''){
         this.router.navigate(['']);
         this.failedLogin = true;
         this.wrongUsername = true;
