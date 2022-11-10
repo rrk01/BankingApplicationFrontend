@@ -19,4 +19,10 @@ export class BeneficiaryService {
     return this.http.put(`${this.baseUrl}` + `/api/staff/beneficiary/`+`${beneficiaryAcNo}`, {responseType: 'text'});  //will change
   }
 
+  // Ryan
+  createuserlist(transfers: object): Observable<object> {
+    console.log("success");
+    return this.http.post(`${this.baseUrl}` + '/api/customer/beneficiaries', transfers);
+  }
+
 }
