@@ -24,4 +24,9 @@ export class AccountService {
     return this.http.put(`${this.baseUrl}` + `/api/staff/accounts/approved/`+`${accountNumber_}` + `/` + `${customer_id}`, {responseType: 'text'});  //will change
   }
 
+  // ------------------------------------------------------
+  getCustomerAccounts(newCustomerNo:any): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + `/api/customer/` + `${newCustomerNo}` + `/account`);
+  }
+
 }

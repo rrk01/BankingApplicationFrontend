@@ -1,10 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Account } from '../models/account/account';
 import { AccountService } from '../models/account/account.service';
 import { Beneficiary } from '../models/beneficiary/beneficiary';
 import { BeneficiaryService } from '../models/beneficiary/beneficiary.service';
 import { Customer } from '../models/customer/customer';
 import { CustomerService } from '../models/customer/customer.service';
+import { Transfer } from '../models/transfer/transfer';
+import { TransferService } from '../models/transfer/transfer.service';
 
 @Component({
   selector: 'app-staff',
@@ -34,38 +38,74 @@ export class StaffComponent implements OnInit {
   // -------------------------------
   disableMessage:any;
   enableMessage:any;
+  //--------------------------------
+  // FOR TRANSFER (need to find customer to do the transfer for)
+  customerId:any; 
+  customerAccount: Account = new Account();
+  customerAccounts:any;
 
-  constructor(private accountService: AccountService, private beneficiaryService: BeneficiaryService, private customerService: CustomerService) { }
+  transfer: Transfer = new Transfer();
+  fromAccount:any;
+  toAccount:any;
+  // --------------------------------------------
+  ack:any;
+
+  constructor(private accountService: AccountService, private beneficiaryService: BeneficiaryService, private customerService: CustomerService, private transferService: TransferService, private router: Router) { }
 
   ngOnInit(): void {
 
   }
 
+  profileForm = new FormGroup({
+    id: new FormControl('', [Validators.required]),
+    fromAccount:new FormControl('', [Validators.required]),
+    toAccount:new FormControl('', [Validators.required]),
+    amount:new FormControl('', [Validators.required]),
+    t_reason:new FormControl('', [Validators.required]),
+    transfer_by:new FormControl('', [Validators.required]),
+  });
+
+  get f(){
+    return this.profileForm.controls;
+   }
+
   div1: boolean = false;
   div2: boolean = false;
   div3: boolean = false;
   div4: boolean = false;
+  div5: boolean = false;
 
   div1Function() {
     this.div1 = true;
     this.div2 = false;
     this.div3 = false;
     this.div4 = false;
+    this.div5 = false;
   }
   div2Function() {
     this.div2 = true;
     this.div1 = false;
     this.div3 = false;
     this.div4 = false;
+    this.div5 = false;
   }
   div3Function() {
     this.div3 = true;
     this.div1 = false;
     this.div2 = false;
     this.div4 = false;
+    this.div5 = false;
   }
   div4Function() {
     this.div4 = true;
+    this.div5 = false;
+    this.div3 = false;
+    this.div2 = false;
+    this.div1 = false;
+  }
+  div5Function() {
+    this.div5 = true;
+    this.div4 = false;
     this.div3 = false;
     this.div2 = false;
     this.div1 = false;
@@ -157,5 +197,44 @@ export class StaffComponent implements OnInit {
       }
     }
   }
+  // ----------------------------------------------------------
+  redirectToLogin() {
+    sessionStorage.clear();
+    this.router.navigate(['']);
+  }
+  // -----------------------------------------------------------
+  readCustomerId(newCustomerNo: any) { 
+    this.ack="";
+    this.customerId = newCustomerNo;
+    console.log("HERE-1 " + this.customerId);
+    this.accountService.getCustomerAccounts(newCustomerNo)
+      .subscribe(data => { this.customerAccounts = data }, error => console.log(error));
+  }
+// ----------------------------------------------------------------
+  setFromAccount(selected:any) {
+    this.fromAccount = selected;
+    console.log(this.fromAccount);
+  }
+
+  setToAccount(selected:any) {
+    this.toAccount = selected;
+    console.log(this.toAccount);
+  }
+
+  createTransfer() {
+    this.transfer.id=this.f['id'].value;
+    this.transfer.fromAccount=this.fromAccount;
+    this.transfer.toAccount=this.toAccount;
+    this.transfer.amount=this.f['amount'].value;
+    this.transfer.t_reason=this.f['t_reason'].value;
+    this.transfer.transfer_by=sessionStorage.getItem('staff-name');
+
+    this.transferService.createTransfer(this.transfer)
+      .subscribe(data => console.log(data),error=>console.log(error));
+    this.ack="Transfer successfully";
+    this.profileForm.reset();
+  }
+// ----------------------------------------------------
+
 
 }
