@@ -8,8 +8,16 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 700px;
-    height: 500px;
+    width: auto;
+    height: auto;
+    padding: 25px;
+}
+.header_img {
+    padding: 0;
+    margin: 0;
+    max-width: 10%;
+    height: auto; 
+
 }
 button{
     margin:5px;

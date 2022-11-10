@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
   wrongPassword: any;
   failedLogin: any;
   wrongAnswer: any;
+
+  blankLogin:any;
+  InactiveUser: any;
+
   
   ngOnInit(): void {
   }
@@ -67,6 +71,10 @@ export class LoginComponent implements OnInit {
     this.wrongUsername = false;
     this.wrongPassword = false;
 
+    this.InactiveUser = false;
+    this.blankLogin = false;
+
+
     this.user.userName=this.f['userName'].value;         //Angular
     this.user.password=this.f['password'].value;
 
@@ -79,7 +87,9 @@ export class LoginComponent implements OnInit {
         console.log(this.users)
         for(let i=0;i<data.length;i++){
           console.log(this.users[i].id);//use i instead of 0
-          if(this.user.userName == this.users[i].userName){
+
+          if(this.user.userName == this.users[i].userName && this.users[i].status == 'ENABLE'){
+
             if(this.user.password == this.users[i].password ){
               sessionStorage.clear();                   // clears session storage before filling it
               sessionStorage.setItem('userObject', this.users[i]);
@@ -96,8 +106,17 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['']);
               this.failedLogin = true;
               this.wrongPassword = true;
+
+              break;
             }
-          }else{
+          } 
+          else if(this.user.userName == this.users[i].userName && this.users[i].status != 'ENABLE'){
+            this.failedLogin = true;
+            this.InactiveUser = true;
+            break;
+          }
+          else if(this.user.userName!='' && i == (data.length-1)){
+
             this.router.navigate(['']);
             this.failedLogin = true;
             this.wrongUsername = true;
@@ -127,7 +146,9 @@ slogin() {
     console.log(this.users)
     for(let i=0;i<data.length;i++){
       console.log(this.users[i].id);//use i instead of 0
-      if(this.user.userName == this.users[i].userName){
+
+      if(this.user.userName == this.users[i].userName && this.users[i].status == 'ENABLED'){
+
         if(this.user.password == this.users[i].password ){
           sessionStorage.clear();                   // clears session storage before filling it
           sessionStorage.setItem('userObject', this.users[i]);
@@ -142,12 +163,21 @@ slogin() {
           this.router.navigate(['']);
           this.failedLogin = true;
           this.wrongPassword = true;
+
+          break;
         }
+      }
+      else if(this.user.userName == this.users[i].userName && this.users[i].status != 'ENABLED'){
+        this.failedLogin = true;
+        this.InactiveUser = true;
+        break;
       }
       else if(this.user.userName == 'admin@admin.com'){
         this.alogin();
+        break;
       }
-      else if(this.user.userName != this.users[i].userName && this.user.userName != 'admin@admin.com'){
+      else if(this.user.userName!='' && i == (data.length-1)){
+
         this.router.navigate(['']);
         this.failedLogin = true;
         this.wrongUsername = true;

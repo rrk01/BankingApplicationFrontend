@@ -100,9 +100,9 @@
 <div class="jumbotron text-center">
   <h1>Super Admin</h1>
   <div id="buttonsid">
-    <button style="margin-left:20px;" (click)="toggleCreateStaff()">Create Staff</button>
-    <button style="margin-left:20px;" (click)="toggleViewStaff()">View Staff</button>
-    <button style="margin-left:20px;" class="logoutbutton" (click)="redirectToLogin()">Log out</button>
+    <button style="margin-left:20px; width: 200px;" (click)="toggleCreateStaff()">Create Staff</button>
+    <button style="margin-left:20px; width: 200px;" (click)="toggleViewStaff()">View Staff</button>
+    <button style="margin-left:20px; width: 200px;" class="logoutbutton" (click)="redirectToLogin()">Log out</button>
 
   </div>
   <div id="insertformdiv" *ngIf="viewCreateStaff">
@@ -123,7 +123,8 @@
               <input type="text" style="margin-bottom:20px; height: 50px; width: 550px;  left: 195px"
                 placeholder="Confirm Staff Password" name="password1" required formControlName="password1">
               <br>
-              <button type="submit" style="margin-bottom:20px; height: 40px; width: 400px; left: 280px">Create</button>
+              <button type="submit" style="margin-bottom:20px; height: 40px; width: 300px;">Create</button>
+
               <br>
             </h4>
           </div>
