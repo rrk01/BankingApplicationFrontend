@@ -14,6 +14,11 @@ export class CustomerService {
   getuserList(): Observable<any> {
     return this.http.get(`${this.baseUrl}` + '/api/customer/getcustomer');
   }
+
+  createcustomerList(user: object): Observable<object> {
+    console.log("success");
+    return this.http.post(`${this.baseUrl}` + '/api/customer/register', user);
+  }
   // -----------------------------
 
   //Read Operation

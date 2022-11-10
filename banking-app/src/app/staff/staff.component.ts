@@ -47,6 +47,7 @@ export class StaffComponent implements OnInit {
   transfer: Transfer = new Transfer();
   fromAccount:any;
   toAccount:any;
+  transferMessage:any;
   // --------------------------------------------
   ack:any;
 
@@ -233,6 +234,13 @@ export class StaffComponent implements OnInit {
       .subscribe(data => console.log(data),error=>console.log(error));
     this.ack="Transfer successfully";
     this.profileForm.reset();
+    this.transferService.updateAccountsBalance(this.transfer)
+    .subscribe(
+      (data: any) => {
+        this.transferMessage = true;
+        this.accountService.getCustomerAccounts(this.customerId)
+        .subscribe(data => { this.customerAccounts = data })
+      },(error: any) => console.log(error));
   }
 // ----------------------------------------------------
 

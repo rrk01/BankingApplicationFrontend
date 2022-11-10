@@ -55,6 +55,10 @@ export class LoginComponent implements OnInit {
     return this.forgotForm.controls;
   }
 
+  goToRegister(){
+    this.router.navigate(['/registration'])
+  }
+
   clogin() {
     this.forgot = false;
     this.inList = false;
