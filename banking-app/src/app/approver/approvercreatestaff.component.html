@@ -1,0 +1,29 @@
+<form [formGroup]="profileForm" (ngSubmit)="create()">
+    <!-- <form action="action_page.php" method="post"> -->
+    <div class="imgcontainer">
+ 
+    </div>
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h4>
+                <input type="text" placeholder="Enter Staff Name" name="name" required formControlName="name">
+            
+                <br>
+                <input type="text" placeholder="Enter Staff Username" name="userName" formControlName="userName">
+                <br>
+                <input type="text" placeholder="Enter Staff Password" name="password" required formControlName="password">
+                <br>
+                <input type="text" placeholder="Confirm Staff Password" name="password" required formControlName="password">
+                <br>
+                <input type="text" placeholder="DISABLED" value="DISABLED" name="status" required formControlName="status" readonly>
+                <br>
+            
+ 
+                <button type="submit">Create</button><br>
+            </h4>
+        </div>
+ 
+        <div class="jumbotron text-center">
+            <h1 style="color:green">{{ack | uppercase}}</h1>
+           
+            </div>

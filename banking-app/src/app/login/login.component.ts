@@ -181,7 +181,6 @@ alogin(){
           break; //braks out of loop once finished it will route to home
       }else{
         this.router.navigate(['']);
-        this.router.navigate(['']);
         this.failedLogin = true;
         this.wrongPassword = true;
       }

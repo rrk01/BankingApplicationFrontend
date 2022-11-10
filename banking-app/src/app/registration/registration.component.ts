@@ -13,22 +13,27 @@ export class RegistrationComponent implements OnInit {
 
   user : Customer= new Customer();
   ack: any;
+
   currentC: any;
   userNameExists: any;
   failedRegister: any;
   blankForm: any;
   passwordNoMatch: any;
 
+
   constructor(private customerService:CustomerService, private router: Router) { }
 
   ngOnInit(): void {
   }
+
 
   profileForm = new FormGroup({
     userName: new FormControl('', [Validators.required]),
     fullName: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     pswdConfirm: new FormControl('', [Validators.required])
+
+
   });
 
   get f(){
@@ -36,6 +41,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit() {
+
     this.failedRegister = false;
     this.userNameExists = false;
     this.passwordNoMatch = false;
@@ -43,6 +49,7 @@ export class RegistrationComponent implements OnInit {
     this.user.userName = this.f['userName'].value;
     this.user.fullName = this.f['fullName'].value;
     this.user.password = this.f['password'].value;
+
    
     console.log(this.profileForm.value)
     //Post Operationwill be executed here
@@ -70,6 +77,7 @@ export class RegistrationComponent implements OnInit {
     } else{
       this.failedRegister = true;
       this.blankForm = true;
+
     }
 
    }

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class BeneficiaryService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:9090';
 
   constructor(private http: HttpClient) { }
 
