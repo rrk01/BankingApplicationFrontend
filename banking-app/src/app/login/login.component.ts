@@ -99,6 +99,8 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('customer-password',this.users[i].password);
               sessionStorage.setItem('customer-phone',this.users[i].phone);
               sessionStorage.setItem('customer-status',this.users[i].status);
+              sessionStorage.setItem('customer-secretQuestion', this.users[i].secretQuestion);
+              sessionStorage.setItem('customer-secretAnswer', this.users[i].secretAnswer);
               this.router.navigate(['/profile']);
               break; //braks out of loop once finished it will route to home
             } else{
