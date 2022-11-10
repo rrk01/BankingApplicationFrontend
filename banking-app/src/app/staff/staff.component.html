@@ -2,8 +2,9 @@
   <div class="dashboard" style="border:1px solid black">
     <div class="header">
       <img class="header_img" src="https://cdn2.iconfinder.com/data/icons/bank-starter-glyph/48/Sed-05-512.png">
-      <button> Transfer </button>
-      <h1 style="font-size: 14pt; float: right; margin: 10px;"> Welcome: {{currentStaff}}</h1>
+      <button (click)="div5Function()"> Transfer </button>
+      <button style="margin-left:20px;" (click)="redirectToLogin()"> Logout </button>
+      <h1 style="font-size: 14pt; float: right; margin: 20px;"> Welcome: {{currentStaff}}</h1>
     </div>
     <div class="staff-nav-bar">
       <nav>
@@ -36,6 +37,12 @@
               <td>{{ t .t_amount }}</td>
               <td>{{ t .credit_debit }}</td>
             </tr>
+            <!-- <tr *ngFor="let t of accounts.transactions">
+              <td>{{ t .t_date }}</td>
+              <td>{{ t .t_reason }}</td>
+              <td>{{ t .t_amount }}</td>
+              <td>{{ t .credit_debit }}</td>
+            </tr> -->
           </table>
         </div>
       </div>
@@ -99,7 +106,8 @@
                 <!-- <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"> -->
                 <form action="">
                   <label class="switch">
-                    <input type="checkbox" id={{customer.id}} [checked]="customer.status=='ENABLE'" (click)="updateActiveState(customer.id)">
+                    <input type="checkbox" id={{customer.id}} [checked]="customer.status=='ENABLE'"
+                      (click)="updateActiveState(customer.id)">
                     <span class="slider round"></span>
                   </label>
                 </form>
@@ -108,9 +116,49 @@
           </table>
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <p style="margin:10px; text-align: center;"> - For connecting with us write us at ngomez@cogentinfo.com - </p>
+      <div *ngIf="div5" class="jumbotron text-center">
+        <div class="jumbotron text-center">
+          <input type="text" placeholder="Enter Customer Id" id="customerNoInput" name="customerNoInput"
+            #customerNoInput>
+          <button (click)="readCustomerId(customerNoInput.value)" type="submit">Go</button><br>
+        </div>
+        <table class="table" border="1">
+          <tr>
+            <th>Account No.</th>
+            <th>Balance</th>
+            <th>Account Type</th>
+            <th>Select</th>
+          </tr>
+          <tr *ngFor="let customerAccount of customerAccounts">
+            <td>{{ customerAccount.accountNumber }}</td>
+            <td>{{ customerAccount.accountBalance }}</td>
+            <td>{{ customerAccount.accountType }}</td>
+            <td> <input type="checkbox" id={{customerAccount.accountNumber}}
+                (click)="setFromAccount(customerAccount.accountNumber)"> </td>
+          </tr>
+        </table>
+        <div>
+          <p>Select To Amount</p>
+          <select [(ngModel)]="toAccount">
+            <option *ngFor="let customerAccount of customerAccounts" [value]="customerAccount.accountNumber">
+              {{customerAccount.accountNumber}}
+            </option>
+          </select>
+          <br><br>
+          <form [formGroup]="profileForm" (ngSubmit)="createTransfer()">
+            <input type="number" placeholder="Enter Amount" id="amount" name="amount" formControlName="amount">
+            <br><br>
+            <input type="text" style="width: 300px; padding:10px; margin:10px;" placeholder="Reason" id="t_reason"
+              name="t_reason" formControlName="t_reason">
+            <br>
+            <button type="submit" style="margin-bottom:20px; height: 40px; width: 100px; left: 280px"
+              (click)="setToAccount(toAccount)">Transfer</button>
+            <div class="jumbotron text-center">
+              <h1 style="color:green">{{ack | uppercase}}</h1>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </body>

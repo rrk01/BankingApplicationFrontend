@@ -117,4 +117,10 @@ export class ApproverComponent implements OnInit {
   checkedButton(user: Staff){
     return user;
   }
+
+  redirectToLogin(){
+    sessionStorage.clear();
+    this.router.navigate(['./login']);
+  }
+  
 }
