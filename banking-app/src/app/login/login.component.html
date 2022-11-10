@@ -20,8 +20,9 @@
                     <br>
                     <br>
                     <div class="alert-danger" *ngIf="failedLogin">
+                        <div *ngIf="InactiveUser" [ngClass] = "'error'"> Inactive User </div>
                         <div *ngIf="blankLogin" [ngClass] = "'error'"> Form cannot be blank </div>
-                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorect username </div>
+                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorrect username </div>
                         <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
                     </div>
                     <button type="button" (click)="slogin()">Submit</button>
@@ -42,8 +43,9 @@
                     <br>
                     <br>
                     <div class="alert-danger" *ngIf="failedLogin">
+                        <div *ngIf="InactiveUser" [ngClass] = "'error'"> Inactive User </div>
                         <div *ngIf="blankLogin" [ngClass] = "'error'"> Form cannot be blank </div>
-                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorect username </div>
+                        <div *ngIf="wrongUsername" [ngClass] = "'error'"> Incorrect username </div>
                         <div *ngIf="wrongPassword" [ngClass] = "'error'"> Incorrect Password</div>
                     </div>
                     <button type="button" class="forget" (click)="isForgot()">forgot password </button>
@@ -57,7 +59,7 @@
                         <h2>Enter your username</h2>
                         <input type="text" placeholder="userName" name="userName" required formControlName="userName">
                         <br>
-                        <div *ngIf="wrongUsername" class="alert-danger"> Incorect username </div>
+                        <div *ngIf="wrongUsername" class="alert-danger"> Incorrect username </div>
                         <button type="button" (click)="customerInList()">Enter</button>
                     </div>
                     <div *ngIf="inList">
