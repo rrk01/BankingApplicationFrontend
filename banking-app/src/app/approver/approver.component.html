@@ -5,10 +5,10 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 700px;
+    width: auto;
     height: 500px;
-    margin:auto;
-    padding:30px;
+    margin: auto;
+    padding: 30px;
     border-style: solid;
   }
 
@@ -18,10 +18,10 @@
     right: 0;
     bottom: 0;
     left: 0;
-    width: 700px;
+    width: auto;
     height: 500px;
-    margin:auto;
-    padding:30px;
+    margin: auto;
+    padding: 30px;
     border-style: solid;
   }
 
@@ -31,7 +31,7 @@
     position: relative;
     margin: 10px;
     padding: 10px;
-    width: auto; 
+    width: auto;
     border: 1px solid black;
   }
 
@@ -94,13 +94,16 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
 </style>
 
 <div class="jumbotron text-center">
+  <h1>Super Admin</h1>
   <div id="buttonsid">
     <button style="margin-left:20px;" (click)="toggleCreateStaff()">Create Staff</button>
     <button style="margin-left:20px;" (click)="toggleViewStaff()">View Staff</button>
-    <button style="margin-left:20px;"> Logout </button>
+    <button style="margin-left:20px;" class="logoutbutton" (click)="redirectToLogin()">Log out</button>
+
   </div>
   <div id="insertformdiv" *ngIf="viewCreateStaff">
     <form [formGroup]="profileForm" (ngSubmit)="create()">
@@ -120,8 +123,7 @@
               <input type="text" style="margin-bottom:20px; height: 50px; width: 550px;  left: 195px"
                 placeholder="Confirm Staff Password" name="password1" required formControlName="password1">
               <br>
-              <button type="submit"
-                style="margin-bottom:20px; height: 40px; width: 400px; left: 280px">Create</button>
+              <button type="submit" style="margin-bottom:20px; height: 40px; width: 400px; left: 280px">Create</button>
               <br>
             </h4>
           </div>

@@ -1,0 +1,104 @@
+<div class="parent-container d-flex">
+  <div class="container">
+    <div class="header">
+      <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <ul class="dropdown">
+              <a href="#" class="dropdown-toggle js-activated" aria-expanded="false">Welcome, User <b
+                  class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </ul>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
+            aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/profile">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/accounts">Accounts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/transfers">Transfers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="row; pl-50% mb-4 bg-light rounded-10">
+      <div class="col text-center">
+        <h1>Add Account</h1>
+        <div class="row">
+          <div class="col">
+            <select class="form-select" aria-label="Default select example">
+              <option value="" selected disabled>Account Type</option>
+              <option value="1">Checking</option>
+              <option value="2">Savings</option>
+
+            </select>
+          </div>
+        </div>
+        <br><br>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountModal">
+          Submit
+        </button>
+
+        <!-- Modal -->
+        <div class="modal" id="accountModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Modal body text goes here.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row; pl-50% mb-4 bg-light rounded-10">
+      <div class="col text-center">
+        <h1>List of Accounts</h1>
+        <!-- <tr *ngFor="let transfer of transfers">
+                    <th scope="row">#</th>
+                    <td>{{ user.id }}</td>
+                    <td>{{user.planName }}</td>
+                    <td>{{ user.cost}}</td>
+                    <td>{{ user.validity }}</td>
+                   <td> <button class="btn btn-danger btn-rounded" (click)="deleteUser(user.id)"> Delete</button></td>
+                   
+                </tr> -->
+
+      </div>
+    </div>
+  </div>
+</div>
