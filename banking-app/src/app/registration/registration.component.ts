@@ -39,6 +39,7 @@ export class RegistrationComponent implements OnInit {
     this.failedRegister = false;
     this.userNameExists = false;
     this.passwordNoMatch = false;
+    this.blankForm = false;
  
     this.user.userName = this.f['userName'].value;
     this.user.fullName = this.f['fullName'].value;
