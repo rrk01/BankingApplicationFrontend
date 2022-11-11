@@ -34,9 +34,9 @@
           <div class="row">
             <div class="col">
               <div class="form mb-3">
-                <input type="text" class="form-control" id="accountNumber" placeholder="Enter Acc No" required
+                <input type="text" class="form-control" name="accountNumber" id="accountNumber" placeholder="Enter Acc No" required
                   formControlName="accountNumber">
-                <input type="text" class="form-control" id="beneficiaryName" placeholder="Enter name" required
+                <input type="text" class="form-control" name="beneficiaryName" id="beneficiaryName" placeholder="Enter name" required
                   formControlName="beneficiaryName">
               </div>
               <select class="form-select" aria-label="Default select example" required formControlName="accountType">
@@ -46,7 +46,7 @@
               </select>
             </div>
           </div>
-          <button style="padding:0; margin:10px;" type="submit" (click)="createBeneficiary()"> Create </button>
+          <button style="padding:0; margin:10px;"> Create </button>
           <div class="jumbotron text-center">
             <h1 style="color:green">{{ack | uppercase}}</h1>
           </div>
