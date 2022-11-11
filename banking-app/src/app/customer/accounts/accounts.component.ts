@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./accounts.component.css']
 })
 export class AccountsComponent implements OnInit {
+  currentCustomer = sessionStorage.getItem('customer-fullName');
 
   constructor() { }
 

@@ -33,3 +33,13 @@ button {
     opacity: 1;
     transition: 0s
   }
+
+  /* ------------------------ */
+  .nav-pills .nav-link:not(.active) {
+    color:#979797;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #979797;
+}

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  currentCustomer = sessionStorage.getItem('customer-fullName');
 
   constructor() { }
 

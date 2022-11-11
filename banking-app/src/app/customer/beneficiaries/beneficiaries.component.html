@@ -1,85 +1,82 @@
 <div class="parent-container">
-    <div class="container">
-        <div class="header">
-            <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <ul class="dropdown">
-                            <a href="#" class="dropdown-toggle js-activated" aria-expanded="false">Welcome, User <b
-                                    class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Logout</a></li>
-                            </ul>
-                        </ul>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
-                        aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-            
-                    <div class="collapse navbar-collapse" id="navbarsExample02">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="/profile">Profile</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/accounts">Accounts</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/transfers">Transfers</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="row; pl-50% mb-4 bg-light rounded-10">
-            <div class="col text-center">
-                <h1>Add Beneficiary</h1>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Full Name</label>
-                        </div>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="" selected disabled>Account Type</option>
-                            <option value="1">Checking</option>
-                            <option value="2">Savings</option>
-                            
-                        </select>
-                    </div>
-                </div>
-                <br><br>
-                <input class="btn btn-primary" type="submit" value="Submit">
-                <br><br>
-
-
-
-
-
-            </div>
-        </div>
+  <div class="container">
+    <div class="header">
+      <div class="container" style="border:1px solid #cecece; border-radius: 4px">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-current="page" href="#">Hey, {{currentCustomer}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts">Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/transfers">Transfers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/beneficiaries">Beneficiaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/statements">View Statements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <div class="container">
-        <div class="row; pl-50% mb-4 bg-light rounded-10">
-            <div class="col text-center">
-                <h1>List of Beneficiaries</h1>
-                <!-- <tr *ngFor="let transfer of transfers">
-                    <th scope="row">#</th>
-                    <td>{{ user.id }}</td>
-                    <td>{{user.planName }}</td>
-                    <td>{{ user.cost}}</td>
-                    <td>{{ user.validity }}</td>
-                   <td> <button class="btn btn-danger btn-rounded" (click)="deleteUser(user.id)"> Delete</button></td>
-                   
-                </tr> -->
-                
+    <div class="row; pl-50% mb-4 bg-light rounded-10">
+      <div class="col text-center">
+        <h1>Add Beneficiary</h1>
+        <form [formGroup]="profileForm" (ngSubmit)="createBeneficiary()">
+          <div class="row">
+            <div class="col">
+              <div class="form mb-3">
+                <input type="text" class="form-control" id="accountNumber" placeholder="Enter Acc No" required
+                  formControlName="accountNumber">
+                <input type="text" class="form-control" id="beneficiaryName" placeholder="Enter name" required
+                  formControlName="beneficiaryName">
+              </div>
+              <select class="form-select" aria-label="Default select example" required formControlName="accountType">
+                <option value="" selected disabled>Account Type</option>
+                <option value="0">CHECKING</option>
+                <option value="1">SAVINGS</option>
+              </select>
             </div>
-        </div>
+          </div>
+          <button style="padding:0; margin:10px;" type="submit" (click)="createBeneficiary()"> Create </button>
+          <div class="jumbotron text-center">
+            <h1 style="color:green">{{ack | uppercase}}</h1>
+          </div>
+        </form>
+        <br><br>
+      </div>
     </div>
+  </div>
+  <div class="container">
+    <div class="row; pl-50% mb-4 bg-light rounded-10">
+      <div class="col text-center">
+        <h1>List of Beneficiaries</h1>
+        <br>
+        <button style="padding:0; margin:10px;" (click)="getBeneficiary()"> Show beneficiaries </button>
+        <br>
+        <table class="table" border="1">
+          <tr>
+            <th>Bene. Acc Number</th>
+            <th>Beneficiary Name</th>
+            <th> Delete</th>
+          </tr>
+          <tr *ngFor="let b of beneficiaries_2">
+            <td>{{ b.beneficiaryAccountNo }}</td>
+            <td>{{ b.beneficiaryName }}</td>
+            <td>
+            <button class="btn btn-danger" style="padding:0; margin:10px; color: black;" (click)="deleteBeneficiary(b.beneficiaryAccountNo)">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

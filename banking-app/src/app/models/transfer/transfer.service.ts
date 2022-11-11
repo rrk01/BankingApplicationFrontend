@@ -25,5 +25,7 @@ export class TransferService {
     return this.http.put(`${this.baseUrl}` + `/api/staff/transfers`, transfer);
   }
   // ------------------------------------------
-
+  getAllTransfers(): Observable<object> {
+    return this.http.get(`${this.baseUrl}` + `/api/staff/transfer/`);
+  }
 }

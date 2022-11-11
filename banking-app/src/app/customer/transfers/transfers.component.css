@@ -10,3 +10,7 @@
 .navbar-light .nav-item:hover .nav-link {
     color: #FFFFFF;
 }
+
+.header { 
+    top: 0;
+}

@@ -1,40 +1,31 @@
 <div class="parent-container">
   <div class="container">
     <div class="header">
-      <nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <ul class="dropdown">
-              <a href="#" class="dropdown-toggle js-activated" aria-expanded="false">Welcome, User <b
-                  class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Logout</a></li>
-              </ul>
-            </ul>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
-            aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-          <div class="collapse navbar-collapse" id="navbarsExample02">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/profile">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/accounts">Accounts</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/transfers">Transfers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <div class="container" style="border:1px solid #cecece; border-radius: 4px">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-current="page" href="#">Hey, {{currentCustomer}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/accounts">Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/transfers">Transfers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/statements">View Statements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="row; pl-50% mb-4 bg-light rounded-10">
       <div class="col text-center">
