@@ -1,0 +1,159 @@
+<style>
+  #viewformdiv {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 500px;
+    margin: auto;
+    padding: 30px;
+    border-style: solid;
+  }
+
+  #insertformdiv {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 500px;
+    margin: auto;
+    padding: 30px;
+    border-style: solid;
+  }
+
+  #buttonsid {
+    /* left: 140px;
+    position: relative; */
+    position: relative;
+    margin: 10px;
+    padding: 10px;
+    width: auto;
+    border: 1px solid black;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
+
+  input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+</style>
+
+<div class="jumbotron text-center">
+  <h1>Super Admin</h1>
+  <div id="buttonsid">
+    <button style="margin-left:20px; width: 200px;" (click)="toggleCreateStaff()">Create Staff</button>
+    <button style="margin-left:20px; width: 200px;" (click)="toggleViewStaff()">View Staff</button>
+    <button style="margin-left:20px; width: 200px;" class="logoutbutton" (click)="redirectToLogin()">Log out</button>
+
+  </div>
+  <div id="insertformdiv" *ngIf="viewCreateStaff">
+    <form [formGroup]="profileForm" (ngSubmit)="create()">
+      <div class="imgcontainer">
+        <div class="jumbotron text-center">
+          <div class="container">
+            <h4>
+              <input type="text" style="margin-bottom:20px; height: 50px; width: 550px; left: 195px"
+                placeholder="Enter Staff Name" name="name" required formControlName="name">
+              <br>
+              <input type="text" style="margin-bottom:20px; height: 50px; width: 550px; left: 195px"
+                placeholder="Enter Staff Username" name="userName" formControlName="userName">
+              <br>
+              <input type="text" style="margin-bottom:20px; height: 50px; width: 550px; left: 195px"
+                placeholder="Enter Staff Password" name="password" required formControlName="password">
+              <br>
+              <input type="text" style="margin-bottom:20px; height: 50px; width: 550px;  left: 195px"
+                placeholder="Confirm Staff Password" name="password1" required formControlName="password1">
+              <br>
+              <button type="submit" style="margin-bottom:20px; height: 40px; width: 300px;">Create</button>
+              <br>
+            </h4>
+          </div>
+          <div class="jumbotron text-center">
+            <h1 style="color:green">{{ack | uppercase}}</h1>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="viewformdiv" *ngIf="viewViewStaff">
+    <table style="left: 280px; boder-spacing:10px;" class="table ">
+      <tr>
+        <th scope="col">#</th>
+        <th>id</th>
+        <th>name</th>
+        <th>user name</th>
+        <th>disable/enable</th>
+      </tr>
+      <tr *ngFor="let staff of staffs">
+        <th scope="row">#</th>
+        <td>{{ staff.id }}</td>
+        <td>{{ staff.name }}</td>
+        <td>{{ staff.userName }}</td>
+        <td><label class="switch">
+            <input type="checkbox" class="switchbutton" [(ngModel)]="staff.checked"
+              (ngModelChange)="checkedButton(staff)" (click)="disableOrEnableStaff(staff.id)">
+            <span class="slider round"></span>
+          </label></td>
+      </tr>
+    </table>
+  </div>
+</div>

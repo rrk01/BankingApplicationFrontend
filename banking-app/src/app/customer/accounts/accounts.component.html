@@ -30,21 +30,27 @@
     <div class="row; pl-50% mb-4 bg-light rounded-10">
       <div class="col text-center">
         <h1>Add Account</h1>
-        <div class="row">
-          <div class="col">
-            <select class="form-select" aria-label="Default select example">
-              <option value="" selected disabled>Account Type</option>
-              <option value="1">Checking</option>
-              <option value="2">Savings</option>
+        <form [formGroup]="profileForm" (ngSubmit)="addAccount()">
+          <div class="row">
+            <div class="col">
+              <select class="form-select" aria-label="Default select example" required formControlName="accountType">
+                <option value="" selected disabled>Account Type</option>
+                <option value="0">Checking</option>
+                <option value="1">Savings</option>
 
-            </select>
+              </select>
+            </div>
           </div>
-        </div>
-        <br><br>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accountModal">
-          Submit
-        </button>
 
+          <br><br>
+          <button class="btn btn-primary" data-toggle="modal" data-target="#accountModal">
+            Submit
+          </button>
+        </form>
+        <br>
+        <div *ngIf="showAdded">
+          <h2>Account Added</h2>
+        </div>
         <!-- Modal -->
         <div class="modal" id="accountModal" tabindex="-1" role="dialog">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -79,16 +85,24 @@
     <div class="row; pl-50% mb-4 bg-light rounded-10">
       <div class="col text-center">
         <h1>List of Accounts</h1>
-        <!-- <tr *ngFor="let transfer of transfers">
-                    <th scope="row">#</th>
-                    <td>{{ user.id }}</td>
-                    <td>{{user.planName }}</td>
-                    <td>{{ user.cost}}</td>
-                    <td>{{ user.validity }}</td>
-                   <td> <button class="btn btn-danger btn-rounded" (click)="deleteUser(user.id)"> Delete</button></td>
-                   
-                </tr> -->
 
+        <!----->
+        <button style="padding: 0; margin: 20px;" (click)="getAllCustomerAccounts()"> show all accounts </button>
+                <table class="table" border="1">
+                    <tr>
+                      <th>Account Number</th>
+                      <th>Customer Id</th>
+                      <th>Account Type</th>
+                      <th>Balance</th>
+                    </tr>
+                    <tr *ngFor="let customerAccount of customerAccounts">
+                      <td>{{ customerAccount.accountNumber }}</td>
+                      <td>{{ customerAccount.customerId }}</td>
+                      <td>{{ customerAccount.accountType }}</td>
+                      <td>{{ customerAccount.accountBalance }}</td>
+                    </tr>
+                </table>
+        
       </div>
     </div>
   </div>

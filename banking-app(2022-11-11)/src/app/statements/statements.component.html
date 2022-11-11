@@ -1,0 +1,51 @@
+<div class="parent-container">
+  <div class="container">
+    <div class="header">
+      <div class="container" style="border:1px solid #cecece; border-radius: 4px">
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-current="page" href="#">Hey, {{currentCustomer}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/accounts">Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/transfers">Transfers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page"  href="/statements">View Statements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <div class="container" style="text-align:center;">
+    <div class="row; pl-50% mb-4 bg-light rounded-10">
+      <div class="jumbotron text-center" style="text-align:center;">
+        <h1>Statements</h1>
+        <button style="padding:0; margin:20px" (click)="readCustomerId()"> Show Statements </button>
+        <table class="table" border="1">
+          <tr *ngFor="let customerAccount of customerAccounts">
+            <td *ngFor="let t of customerAccount.transactions" style="text-align:left;">
+              Account Number: {{ t.account_number }} <br>
+              Amount: {{ t.t_amount }} <br>
+              Reason: {{ t.t_reason }} <br>
+              Date: {{ t.t_date }} <br>
+              Credit/Debit: {{ t.credit_debit }} <br> <br>
+            </td>
+          </tr>
+        </table>
+        <button id="prevButton" style="padding:0; margin: 10px;">Previous</button> 
+        <button id="nextButton" style="padding:0; margin: 10px;">Next</button> 
+      </div>
+    </div>
+  </div>
+</div>

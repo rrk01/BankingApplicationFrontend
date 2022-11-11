@@ -1,0 +1,164 @@
+<body>
+  <div class="dashboard" style="border:1px solid black">
+    <div class="header">
+      <img class="header_img" src="https://cdn2.iconfinder.com/data/icons/bank-starter-glyph/48/Sed-05-512.png">
+      <button style="margin-left:20px; padding:0; width:100px;"  (click)="div5Function()"> Transfer </button>
+      <button style="margin-left:20px; padding:0; width:100px;" (click)="redirectToLogin()"> Logout </button>
+      <h1 style="font-size: 14pt; float: right; margin: 20px;"> Welcome: {{currentStaff}}</h1>
+    </div>
+    <div style="margin:10px" class="staff-nav-bar">
+      <nav>
+        <button (click)="div1Function()">By Account Number </button>
+        <button (click)="div2Function()">Approve Beneficiary</button>
+        <button (click)="div3Function()">Approve Account</button>
+        <button style="width:300px;" (click)="div4Function()">Enable / Disable Customer</button>
+      </nav>
+    </div>
+    <div class="staff-body">
+      <div *ngIf="div1" class="jumbotron text-center">
+        <div class="jumbotron text-center">
+          <input type="text" placeholder="Enter Account Number" id="accountNoInput" name="accountNoInput"
+            #accountNoInput>
+          <button style="padding:0; width: 100px;" (click)="readAccountTransactions(accountNoInput.value)" type="submit">Go</button><br>
+        </div>
+        <div class="account-number-body">
+          <h4 style="color:black; margin-bottom: 20px;"> Transactions </h4>
+          <p>AC No: {{accountNumber}} - Balance: {{accounts.accountBalance}}</p>
+          <table class="table" border="1">
+            <tr>
+              <th>Date</th>
+              <th>Reason</th>
+              <th>Amount</th>
+              <th>Credit/Debit</th>
+            </tr>
+            <tr *ngFor="let t of accounts.transactions">
+              <td>{{ t .t_date }}</td>
+              <td>{{ t .t_reason }}</td>
+              <td>{{ t .t_amount }}</td>
+              <td>{{ t .credit_debit }}</td>
+            </tr>
+            <!-- <tr *ngFor="let t of accounts.transactions">
+              <td>{{ t .t_date }}</td>
+              <td>{{ t .t_reason }}</td>
+              <td>{{ t .t_amount }}</td>
+              <td>{{ t .credit_debit }}</td>
+            </tr> -->
+          </table>
+        </div>
+      </div>
+      <div *ngIf="div2" class="jumbotron text-center">
+        <button (click)="readBeneficiary()"> List All Beneficiary </button>
+        <div class="approve-beneficiary">
+          <div style="border: 1px solid black;"> Newly Added Beneficiary </div>
+          <table class="table" border="1">
+            <tr>
+              <th>From Customer <br> Name-CustomerId</th>
+              <th>Beneficiary<br> Name-AccNo</th>
+              <th>Beneficiary<br> Added Date</th>
+              <th> Approve </th>
+            </tr>
+            <tr *ngFor="let beneficiary of beneficiaries">
+              <td>{{ beneficiary.customerId }}</td>
+              <td>{{ beneficiary.beneficiaryName }} - {{ beneficiary.beneficiaryAcNo }}</td>
+              <td>{{ beneficiary.beneficiaryAddedDate }}</td>
+              <td><button class="btn btn-dark" style="color:black;" (click)="approveBeneficiary(beneficiary.beneficiaryAcNo)"> Approve </button></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="div3" class="jumbotron text-center">
+        <button (click)="readAllAccount()"> List All Accounts </button>
+        <div class="approve-beneficiary">
+          <div style="border: 1px solid black;"> Newly Added Accounts </div>
+          <table class="table" border="1">
+            <tr>
+              <th>Account Number</th>
+              <th>Customer Id</th>
+              <th>Account Type</th>
+              <th>Account Creation Date</th>
+              <th>Approve</th>
+            </tr>
+            <tr *ngFor="let account_1 of accounts_1">
+              <td>{{ account_1.accountNumber }}</td>
+              <td>{{ account_1.customerId }}</td>
+              <td>{{ account_1.accountType }}</td>
+              <td>{{ account_1.dateOfCreation }}</td>
+              <td><button class="btn btn-dark" style="color:black;" (click)="approveAccount(account_1.accountNumber, account_1.customerId)"> Approve </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="div4" class="jumbotron text-center">
+        <button (click)="readAllCustomers()"> List All Customers </button>
+        <div class="approve-beneficiary">
+          <div style="border: 1px solid black;"> Enable Disable Customers </div>
+          <table class="table" border="1">
+            <tr>
+              <th>Customer Name</th>
+              <th>Customer ID </th>
+              <th> Enable/Disable </th>
+            </tr>
+            <tr *ngFor="let customer of customers">
+              <td>{{ customer.fullName }}</td>
+              <td>{{ customer.id }} - {{customer.status}} </td>
+              <td>
+                <!-- <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"> -->
+                <form action="">
+                  <label class="switch">
+                    <input type="checkbox" id={{customer.id}} [checked]="customer.status=='ENABLE'"
+                      (click)="updateActiveState(customer.id)">
+                    <span class="slider round"></span>
+                  </label>
+                </form>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="div5" class="jumbotron text-center">
+        <div class="jumbotron text-center">
+          <input type="text" placeholder="Enter Customer Id" id="customerNoInput" name="customerNoInput"
+            #customerNoInput>
+          <button style="padding:0; width: 100px;" (click)="readCustomerId(customerNoInput.value)" type="submit">Go</button><br>
+        </div>
+        <table class="table" border="1">
+          <tr>
+            <th>Account No.</th>
+            <th>Balance</th>
+            <th>Account Type</th>
+            <th>Select</th>
+          </tr>
+          <tr *ngFor="let customerAccount of customerAccounts">
+            <td>{{ customerAccount.accountNumber }}</td>
+            <td>{{ customerAccount.accountBalance }}</td>
+            <td>{{ customerAccount.accountType }}</td>
+            <td> <input type="checkbox" id={{customerAccount.accountNumber}}
+                (click)="setFromAccount(customerAccount.accountNumber)"> </td>
+          </tr>
+        </table>
+        <div>
+          <p>Select To Amount</p>
+          <select [(ngModel)]="toAccount">
+            <option *ngFor="let customerAccount of customerAccounts" [value]="customerAccount.accountNumber">
+              {{customerAccount.accountNumber}}
+            </option>
+          </select>
+          <br><br>
+          <form [formGroup]="profileForm" (ngSubmit)="createTransfer()">
+            <input type="number" placeholder="Enter Amount" id="amount" name="amount" formControlName="amount">
+            <br><br>
+            <input type="text" style="width: 300px; padding:10px; margin:10px;" placeholder="Reason" id="t_reason"
+              name="t_reason" formControlName="t_reason">
+            <br>
+            <button type="submit" style="margin-bottom:20px; height: 40px; width: 100px; left: 280px"
+              (click)="setToAccount(toAccount)">Transfer</button>
+            <div class="jumbotron text-center">
+              <h1 style="color:green">{{ack | uppercase}}</h1>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+button {
+    position: relative;
+    background-color: grey;
+    border: none;
+    font-size: 18px;
+    color: black;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }
+
+  /* ------------------------ */
+  .nav-pills .nav-link:not(.active) {
+    color:#979797;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #979797;
+}

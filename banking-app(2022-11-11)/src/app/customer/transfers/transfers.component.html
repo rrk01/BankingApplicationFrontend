@@ -1,0 +1,104 @@
+<div class="parent">
+    <div class="header">
+        <div class="container" style="border:1px solid #cecece; border-radius: 4px">
+          <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-current="page" href="#">Hey, {{currentCustomer}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts">Accounts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/transfers">Transfers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/statements">View Statements</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class="container">
+        <div class="row; pl-50% mb-4 bg-light rounded-10">
+            <div class="col text-center">
+                <h1>Initiate Transfer</h1>
+                <button style="padding: 0; margin: 20px;" (click)="getAllCustomerAccounts()"> show all accounts </button>
+                <table class="table" border="1">
+                    <tr>
+                      <th>Account Number</th>
+                      <th>Customer Id</th>
+                      <th>Account Type</th>
+                      <th>Balance</th>
+                      <th>Select</th>
+                    </tr>
+                    <tr *ngFor="let customerAccount of customerAccounts">
+                      <td>{{ customerAccount.accountNumber }}</td>
+                      <td>{{ customerAccount.customerId }}</td>
+                      <td>{{ customerAccount.accountType }}</td>
+                      <td>{{ customerAccount.accountBalance }}</td>
+                      <td>
+                        <input type="checkbox" id={{customerAccount.accountNumber}}
+                        (click)="setFromAccount(customerAccount.accountNumber)">
+                      </td>
+                    </tr>
+                </table>
+                <div class="row">
+                    <div class="col">
+                        <select [(ngModel)]="toAccount" class="form-select" aria-label="Default select example" style="width: 50%;">
+                            <option *ngFor="let customerAccount of customerAccounts" [value]="customerAccount.accountNumber">
+                                {{customerAccount.accountNumber}}
+                              </option>
+                        </select>
+                    </div>
+                </div>
+                <br><br>
+                <form [formGroup]="profileForm" (ngSubmit)="createTransfer()">
+                    <input type="number" placeholder="Enter Amount" id="amount" name="amount" formControlName="amount">
+                    <br><br>
+                    <input type="text" style="width: 300px; padding:10px; margin:10px;" placeholder="Reason" id="t_reason"
+                      name="t_reason" formControlName="t_reason">
+                    <br>
+                    <button type="submit" style="margin-bottom:20px; height: 40px; width: 100px; left: 280px"
+                      (click)="setToAccount(toAccount)">Transfer</button>
+                    <div class="jumbotron text-center">
+                      <h1 style="color:green">{{ack | uppercase}}</h1>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row; pl-50% mb-4 bg-light rounded-10">
+            <div class="col text-center">
+                <!-- <h1>Transfer History</h1> -->
+                <!-- <table class="table" border="1">
+                    <tr>
+                      <th>From Account</th>
+                      <th>To Account</th>
+                      <th>Amount</th>
+                      <th>Reason</th>
+                      <th>Transfer By</th>
+                    </tr>
+                    <tr *ngFor="let customerAccount of customerAccounts">
+                      <td>{{ customerAccount.accountNumber }}</td>
+                      <td>{{ customerAccount.customerId }}</td>
+                      <td>{{ customerAccount.accountType }}</td>
+                      <td>{{ customerAccount.accountBalance }}</td>
+                      <td>
+                        <input type="checkbox" id={{customerAccount.accountNumber}}
+                        (click)="setFromAccount(customerAccount.accountNumber)">
+                      </td>
+                    </tr>
+                  </table> -->
+            </div>
+        </div>
+    </div>
+</div>

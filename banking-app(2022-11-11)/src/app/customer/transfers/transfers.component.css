@@ -1,0 +1,16 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    margin-left: auto;
+ }
+
+.navbar-light .nav-item.active .nav-link,
+.navbar-light .nav-item .nav-link:active,
+.navbar-light .nav-item .nav-link:focus,
+.navbar-light .nav-item:hover .nav-link {
+    color: #FFFFFF;
+}
+
+.header { 
+    top: 0;
+}

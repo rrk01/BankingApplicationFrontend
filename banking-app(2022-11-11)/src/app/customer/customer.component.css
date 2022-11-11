@@ -1,0 +1,18 @@
+.dashboard{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 25px;
+}
+
+.header{
+    position: relative;
+    margin: 10px;
+    width: auto; 
+    border: 1px solid black;
+}

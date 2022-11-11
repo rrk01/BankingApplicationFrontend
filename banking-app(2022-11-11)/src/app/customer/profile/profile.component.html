@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="header">
+    <div class="container" style="border:1px solid #cecece; border-radius: 4px">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-current="page" href="#">Hey, {{currentCustomer}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/accounts">Accounts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transfers">Transfers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/statements">View Statements</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row; pl-50% mb-4 bg-light rounded-10">
+    <div class="col text-center">
+      <h1>Profile</h1>
+      <form [formGroup]="profileForm" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <fieldset disabled>
+            <h6 style="float:left;">Customer Id: </h6>
+            <input class="form-control" type="text" value={{currentCustomerId}} aria-label="Disabled input example"
+              disabled readonly>
+          </fieldset>
+        </div>
+        <div class="form mb-3">
+            <h6 style="float:left;">Customer User Name: </h6>
+            <input type="text" class="form-control" id="userName" placeholder={{currentCustomerUserName}} required formControlName="userName">
+          </div>
+        <div class="form mb-3">
+          <h6 style="float:left;">Customer Name: </h6>
+          <input type="text" class="form-control" id="fullName" placeholder={{currentCustomer}} required formControlName="fullName">
+        </div>
+        <div class="form mb-3">
+            <h6 style="float:left;">Customer SSN: </h6>
+            <input type="text" class="form-control" id="ssn" placeholder={{currentSSN}} required formControlName="ssn">
+          </div>
+        <div class="form mb-3">
+            <h6 style="float:left;">Customer Phone: </h6>
+          <input type="tel" class="form-control" id="phone" placeholder={{currentPhone}} required formControlName="phone">
+        </div>
+        <div class="form mb-3">
+            <h6 style="float:left;">Customer Password: </h6>
+          <input type="text" class="form-control" id="password" placeholder={{currentPassword}} required formControlName="password">
+        </div>
+         <div class="form mb-3">
+          <h6 style="float:left;">Customer Secret Question: </h6>
+          <select class="form-select" aria-label="Default select example" required formControlName="secretQuestion">
+            <option value="" selected disabled>Select security question</option>
+            <option value="1">What city were you born in?</option>
+            <option value="2">What is your oldest sibling’s middle name?</option>
+            <option value="3">What was the first concert you attended?</option>
+            <option value="4">What was the make and model of your first car?</option>
+            <option value="5">In what city or town did your parents meet?</option>
+          </select>
+        </div>
+        <div class="form mb-3">
+          <h6 style="float:left;">Customer Secret Question Answer: </h6>
+          <input type="text" class="form-control" id="secretAnswer" placeholder="name@example.com" required formControlName="secretAnswer" >
+        </div>
+        <button class="btn btn-primary">Save</button>
+        <div class="jumbotron text-center">
+            <h1 style="color:green">{{ack | uppercase}}</h1>
+        </div>
+        <br><br>
+      </form>
+    </div>
+
+  </div>
+
+</div>

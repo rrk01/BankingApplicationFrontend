@@ -34,4 +34,10 @@ export class AccountService {
     return this.http.put(`${this.baseUrl}` + `/api/customer/addTransferToTransaction/`+ `${fromAccount}`, transfer);  //will change
   }
 
+  // -------------------------------------------------------
+  createCustomerAccount(customer_id: any, newAccount: object): Observable<any> {
+    return this.http.post(`${this.baseUrl}` + `/api/customer/` + `${customer_id}` + `/account`, newAccount);
+  }
+
+  
 }
