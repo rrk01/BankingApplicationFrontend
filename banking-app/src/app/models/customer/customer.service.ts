@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class CustomerService {
-  private baseUrl = 'http://localhost:9090';
+  private baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +33,10 @@ export class CustomerService {
   updateCustomerDisable(customer_id: number): Observable<any> {
     return this.http.put(`${this.baseUrl}` + `/api/staff/customer/disable/` + `${customer_id}`, { responseType: 'text' });  //will change
   }
-
-
+// --------------------------------------------
+  updateCustomer(customer:object, customerId:any): Observable<any> {
+    return this.http.put(`${this.baseUrl}` + `/api/customer/` + `${customerId}`, customer);
+  }
+  
 
 }
