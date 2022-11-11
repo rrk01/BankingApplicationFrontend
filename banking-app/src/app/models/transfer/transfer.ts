@@ -1,5 +1,5 @@
 export class Transfer {
-    id:any;
+    id:any;                   
     fromAccount:any;
     toAccount:any;
     amount:any;
