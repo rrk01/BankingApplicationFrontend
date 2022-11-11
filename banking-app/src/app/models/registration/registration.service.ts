@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class RegistrationService {
 
-  private baseUrl='http://localhost:9090';
+  private baseUrl='http://localhost:8080';
 
   constructor(private http: HttpClient) { }
   listallstaff(): Observable<any> {

@@ -10,6 +10,12 @@ import { StaffComponent } from './staff/staff.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ApproverComponent } from './approver/approver.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TransfersComponent } from './customer/transfers/transfers.component';
+import { ProfileComponent } from './customer/profile/profile.component';
+import { BeneficiariesComponent } from './customer/beneficiaries/beneficiaries.component';
+import { AccountsComponent } from './customer/accounts/accounts.component';
+import { StatementsComponent } from './statements/statements.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +26,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StaffComponent,
     RegistrationComponent,
     ApproverComponent,
+    // ---------------------
+    TransfersComponent,
+    ProfileComponent,
+    BeneficiariesComponent,
+    AccountsComponent,
+    StatementsComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule, // Need
     AppRoutingModule,
     FormsModule,

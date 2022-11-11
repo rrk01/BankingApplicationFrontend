@@ -25,4 +25,18 @@ export class BeneficiaryService {
     return this.http.post(`${this.baseUrl}` + '/api/customer/beneficiaries', transfers);
   }
 
+  // ----------------------------------
+  createBeneficiary(beneficiary:object, customerId:any): Observable<object> {
+    console.log("success");
+    return this.http.post(`${this.baseUrl}` + `/api/customer/` + `${customerId}` + `/beneficiary`, beneficiary);
+  }
+
+  getBeneficiary(customerId:any): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + `/api/customer/`+ `${customerId}` + `/beneficiary`); 
+  }
+
+  deleteBeneficiary(customerId: any, beneficiaryAcNo:any): Observable<any> {
+    return this.http.delete(`${this.baseUrl}` + `/api/customer/`+ `${customerId}` + `/beneficiary/`+ `${beneficiaryAcNo}`, {responseType: 'text'});
+  }
+
 }

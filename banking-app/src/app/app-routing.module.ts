@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { StaffComponent } from './staff/staff.component';
+import { StatementsComponent } from './statements/statements.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'profile', component:ProfileComponent },
   { path: 'transfers', component:TransfersComponent},
   { path: 'beneficiaries', component:BeneficiariesComponent},
-  { path: 'accounts', component:AccountsComponent}
+  { path: 'accounts', component:AccountsComponent},
+  { path: 'statements', component:StatementsComponent}
 ]; //routes for routes;
 
 @NgModule({
